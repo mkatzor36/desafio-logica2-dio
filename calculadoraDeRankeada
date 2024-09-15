@@ -1,0 +1,39 @@
+let vitorias = [40, 120, 51, 5];
+let derrotas = [12, 60, 23, 6];
+let contagem = vitorias.length;
+
+for (let i = 0; i < contagem; i++) {
+    let ranking = calculaRanking(vitorias);
+    let saldo = calculaSaldo(vitorias, derrotas);
+    console.log(`O Herói ${i + 1} tem saldo de ${saldo[i]} e está no nível de ${ranking[i]}`);
+}
+
+function calculaRanking(vitorias) {
+    let ranking = [];
+    for (let i = 0; i < vitorias.length; i++) {
+        if (vitorias[i] < 10) {
+            ranking.push("Ferro");
+        } else if (vitorias[i] < 20) {
+            ranking.push("Bronze");
+        } else if (vitorias[i] < 50) {
+            ranking.push("Prata");
+        } else if (vitorias[i] < 80) {
+            ranking.push("Ouro");
+        } else if (vitorias[i] < 90) {
+            ranking.push("Diamante");
+        } else if (vitorias[i] < 100) {
+            ranking.push("Lendário");
+        } else {
+            ranking.push("Imortal");
+        }
+    }
+    return ranking;
+}
+
+function calculaSaldo(vitorias, derrotas) {
+    let saldos = [];
+    for (let i = 0; i < vitorias.length; i++) {
+        saldos.push(vitorias[i] - derrotas[i]);
+    }
+    return saldos;
+}
